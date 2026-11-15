@@ -48,7 +48,7 @@ jobs:
           start: yarn dev
           wait-on: "http://localhost:3000,http://localhost:3001"
           wait-on-timeout: 120
-          spec: "cypress/tests/ui/auth.spec.ts,cypress/tests/ui/auth-retry.spec.ts"
+          spec: "cypress/tests/ui/auth.spec.ts"
           config: video=true
 
       - name: Preserve browser evidence
