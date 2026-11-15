@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="6.095" tests="4" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-15T04:16:53" tests="0" file=".cursor/skills/verify-rwa/helpers/auth-evidence.cy.js" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="verify-rwa: authentication evidence" timestamp="2026-11-15T04:16:53" tests="4" time="6.095" failures="0">
+    <testcase name="verify-rwa: authentication evidence auth-redirect: unauthenticated /personal redirects to /signin" time="2.219" classname="auth-redirect: unauthenticated /personal redirects to /signin">
+    </testcase>
+    <testcase name="verify-rwa: authentication evidence auth-invalid-user: unknown username shows the sign-in error" time="1.299" classname="auth-invalid-user: unknown username shows the sign-in error">
+    </testcase>
+    <testcase name="verify-rwa: authentication evidence auth-invalid-password: seeded user with wrong password shows the sign-in error" time="1.065" classname="auth-invalid-password: seeded user with wrong password shows the sign-in error">
+    </testcase>
+    <testcase name="verify-rwa: authentication evidence auth-login: seeded user with s3cret lands on / and keeps a 30-day session cookie" time="1.454" classname="auth-login: seeded user with s3cret lands on / and keeps a 30-day session cookie">
+    </testcase>
+  </testsuite>
+</testsuites>

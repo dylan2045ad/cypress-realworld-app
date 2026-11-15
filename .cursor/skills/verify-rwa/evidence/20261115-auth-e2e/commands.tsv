@@ -1,0 +1,9 @@
+utc	exit	command
+2026-11-15T04:16:23Z	0	yarn install --frozen-lockfile
+2026-11-15T04:16:24Z	0	npx cypress verify
+2026-11-15T04:16:24Z	started	setsid yarn dev (background)
+2026-11-15T04:16:31Z	0	doctor.sh 20261115-auth-e2e
+2026-11-15T04:16:31Z	0	doctor.sh 20261115-auth-e2e
+2026-11-15T04:16:47Z	0	yarn cypress:run --spec cypress/tests/ui/auth.spec.ts --config screenshotsFolder=/home/ubuntu/verify-rwa-evidence/20261115-auth-e2e/screenshots/auth-spec,video=false --reporter junit --reporter-options mochaFile=/home/ubuntu/verify-rwa-evidence/20261115-auth-e2e/junit/auth-spec.xml
+2026-11-15T04:16:59Z	0	yarn cypress:run --spec .cursor/skills/verify-rwa/helpers/auth-evidence.cy.js --config specPattern=.cursor/skills/verify-rwa/helpers/*.cy.js,screenshotsFolder=/home/ubuntu/verify-rwa-evidence/20261115-auth-e2e/screenshots/auth-evidence,video=false,retries=0 --reporter junit --reporter-options mochaFile=/home/ubuntu/verify-rwa-evidence/20261115-auth-e2e/junit/auth-evidence.xml
+2026-11-15T04:17:00Z	0	cleanup.sh 20261115-auth-e2e

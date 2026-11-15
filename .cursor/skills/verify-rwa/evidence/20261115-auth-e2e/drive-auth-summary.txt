@@ -1,0 +1,11 @@
+auth.spec.ts exit=0
+auth-evidence.cy.js exit=0
+auth-evidence.xml tests=4 failures=0
+auth-spec.xml tests=8 failures=0
+screenshots:
+./auth-evidence/auth-evidence.cy.js/auth-invalid-password-after.png
+./auth-evidence/auth-evidence.cy.js/auth-invalid-user-after.png
+./auth-evidence/auth-evidence.cy.js/auth-invalid-user-before.png
+./auth-evidence/auth-evidence.cy.js/auth-login-home.png
+./auth-evidence/auth-evidence.cy.js/auth-logout-signin.png
+./auth-evidence/auth-evidence.cy.js/auth-redirect-signin.png

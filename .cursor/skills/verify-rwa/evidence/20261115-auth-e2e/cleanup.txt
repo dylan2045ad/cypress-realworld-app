@@ -1,0 +1,7 @@
+members before:   10519   10621   10622   10629   10636   10637   10638   10639   10660   10661   10668   10669   10682   10683   10709   10710   10721 
+process group 10519 stopped
+port 3000 free
+port 3001 free
+restored data/database.json (was clean before launch)
+removed state dir /tmp/verify-rwa-state/20261115-auth-e2e (copy kept in evidence/state)
+finished_utc=2026-11-15T04:17:00Z

@@ -1,0 +1,7 @@
+run_id=20261115-auth-e2e
+repo=/workspace
+git_head=fea3d36b2705e64e7a09c59629c4569bbbde7676
+node=v22.20.0
+yarn=1.22.22
+started_utc=2026-11-15T04:16:23Z
+ready_after_polls=4 seeded_login_user=Heath93
