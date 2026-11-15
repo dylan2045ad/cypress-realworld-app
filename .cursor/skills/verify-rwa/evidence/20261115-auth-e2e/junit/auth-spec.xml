@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="10.809" tests="8" failures="0">
+  <testsuite name="Root Suite" timestamp="2026-11-15T04:16:36" tests="0" file="cypress/tests/ui/auth.spec.ts" time="0.000" failures="0">
+  </testsuite>
+  <testsuite name="User Sign-up and Login" timestamp="2026-11-15T04:16:36" tests="8" time="10.807" failures="0">
+    <testcase name="User Sign-up and Login should redirect unauthenticated user to signin page" time="1.902" classname="should redirect unauthenticated user to signin page">
+    </testcase>
+    <testcase name="User Sign-up and Login should redirect to the home page after login" time="1.205" classname="should redirect to the home page after login">
+    </testcase>
+    <testcase name="User Sign-up and Login should remember a user for 30 days after login" time="1.118" classname="should remember a user for 30 days after login">
+    </testcase>
+    <testcase name="User Sign-up and Login should allow a visitor to sign-up, login, and logout" time="2.754" classname="should allow a visitor to sign-up, login, and logout">
+    </testcase>
+    <testcase name="User Sign-up and Login should display login errors" time="0.709" classname="should display login errors">
+    </testcase>
+    <testcase name="User Sign-up and Login should display signup errors" time="1.453" classname="should display signup errors">
+    </testcase>
+    <testcase name="User Sign-up and Login should error for an invalid user" time="0.739" classname="should error for an invalid user">
+    </testcase>
+    <testcase name="User Sign-up and Login should error for an invalid password for existing user" time="0.763" classname="should error for an invalid password for existing user">
+    </testcase>
+  </testsuite>
+</testsuites>

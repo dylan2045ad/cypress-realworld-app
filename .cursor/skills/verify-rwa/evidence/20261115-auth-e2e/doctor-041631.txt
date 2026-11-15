@@ -1,0 +1,10 @@
+PASS  process  PGID=10519 cmd='node /home/ubuntu/.nvm/versions/node/v22.20.0/bin/yarn dev '
+PASS  process-cwd  cwd=/workspace want=/workspace
+PASS  port-3000-owner  listener PID=10661 PGID=10519 want PGID=10519
+PASS  port-3000-node  node=v22.20.0 want=v22.20.0
+PASS  port-3001-owner  listener PID=10721 PGID=10519 want PGID=10519
+PASS  port-3001-node  node=v22.20.0 want=v22.20.0
+PASS  version-git  HEAD=fea3d36b2705e64e7a09c59629c4569bbbde7676 launched_at=fea3d36b2705e64e7a09c59629c4569bbbde7676
+PASS  version-package  cypress-realworld-app@1.0.0
+PASS  frontend  http://localhost:3000 serves <title>Cypress Real World App</title>
+PASS  api-seed  GET http://localhost:3001/testData/users -> 5 users
