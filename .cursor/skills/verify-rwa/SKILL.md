@@ -38,6 +38,7 @@ Prerequisites:
 3. It runs `yarn install --frozen-lockfile`. The postinstall hook runs `husky install && patch-package`, which patches `react-virtualized`. It then runs `npx cypress verify`.
 4. It starts `yarn dev` with `setsid` in a new process group and writes the group leader PID to `/tmp/verify-rwa-state/<RUN_ID>/dev.pgid`. The output goes to `<EVIDENCE_DIR>/logs/yarn-dev.log`. `yarn dev` first runs `predev`. That runs `db:seed:dev`, which runs `predev:cognito:ci` (`ncp` copies the mock aws-exports files) and then copies `data/database-seed.json` to `data/database.json`. This gives the seed data: 5 users, all with password `s3cret` (`SEED_DEFAULT_USER_PASSWORD` in `.env`). It then runs `concurrently yarn:start:react yarn:start:api:watch`, which starts Vite and the nodemon/ts-node API.
 5. It treats the app as ready only when all of these hold. A bare open port is not enough.
+
    - `GET http://localhost:3000/` returns `<title>Cypress Real World App</title>`.
    - `yarn-dev.log` contains `Backend server running at http://localhost:3001`.
    - `GET http://localhost:3001/testData/users` returns at least one seeded user.
@@ -53,16 +54,16 @@ Teardown is `helpers/cleanup.sh` (below). Do not use Ctrl-C or `pkill`.
 
 `helpers/doctor.sh RUN_ID` is read-only. It writes `doctor-<HHMMSS>.txt` to the evidence dir and exits 0 only if every line is `PASS`:
 
-| Check | Meaning |
-| --- | --- |
-| `process` | The recorded PGID leader's cmdline is `yarn dev`. |
-| `process-cwd` | The leader's `/proc/<pid>/cwd` is this repo root. |
-| `port-3000-owner`, `port-3001-owner` | `lsof -t -iTCP:<port> -sTCP:LISTEN` gives a PID whose PGID is the recorded one. |
-| `port-*-node` | That listener runs Node `v$(cat .node-version)`. |
-| `version-git` | `git rev-parse HEAD` still equals the HEAD recorded at launch. If it differs, relaunch. |
-| `version-package` | `package.json` is `cypress-realworld-app@1.0.0`. |
-| `frontend` | `:3000` serves the RWA title. |
-| `api-seed` | `GET /testData/users` returns more than 0 users. |
+| Check                                | Meaning                                                                                 |
+| ------------------------------------ | --------------------------------------------------------------------------------------- |
+| `process`                            | The recorded PGID leader's cmdline is `yarn dev`.                                       |
+| `process-cwd`                        | The leader's `/proc/<pid>/cwd` is this repo root.                                       |
+| `port-3000-owner`, `port-3001-owner` | `lsof -t -iTCP:<port> -sTCP:LISTEN` gives a PID whose PGID is the recorded one.         |
+| `port-*-node`                        | That listener runs Node `v$(cat .node-version)`.                                        |
+| `version-git`                        | `git rev-parse HEAD` still equals the HEAD recorded at launch. If it differs, relaunch. |
+| `version-package`                    | `package.json` is `cypress-realworld-app@1.0.0`.                                        |
+| `frontend`                           | `:3000` serves the RWA title.                                                           |
+| `api-seed`                           | `GET /testData/users` returns more than 0 users.                                        |
 
 Run it first whenever anything looks off. If it prints `DOCTOR FAILED`, do not drive. Run cleanup, then launch again.
 
@@ -99,16 +100,16 @@ For a new feature, copy the pattern: a `.cy.js` file in `helpers/` using `getByS
 
 Evidence lives at `${VERIFY_RWA_EVIDENCE_ROOT:-$HOME/verify-rwa-evidence}/<RUN_ID>/`, outside the repo and outside `/tmp/verify-rwa-state`. Cleanup never touches it.
 
-| Path | Contents |
-| --- | --- |
-| `commands.tsv` | UTC time, exit code and command for every step. |
-| `run-info.txt` | RUN_ID, repo, git HEAD, Node and Yarn versions, readiness poll count, seeded login user. |
-| `logs/*.log` | Full output of yarn install, cypress verify, yarn dev, and each Cypress run. |
-| `doctor-*.txt` | Each doctor result. |
-| `junit/*.xml` | Per-test results. |
-| `screenshots/<spec>/…png` | `cy.screenshot` captures, plus Cypress failure screenshots. |
-| `drive-auth-summary.txt` | Exit codes, test totals and the screenshot list. |
-| `cleanup.txt`, `state/` | What cleanup stopped and reverted, and a copy of the run state. |
+| Path                      | Contents                                                                                 |
+| ------------------------- | ---------------------------------------------------------------------------------------- |
+| `commands.tsv`            | UTC time, exit code and command for every step.                                          |
+| `run-info.txt`            | RUN_ID, repo, git HEAD, Node and Yarn versions, readiness poll count, seeded login user. |
+| `logs/*.log`              | Full output of yarn install, cypress verify, yarn dev, and each Cypress run.             |
+| `doctor-*.txt`            | Each doctor result.                                                                      |
+| `junit/*.xml`             | Per-test results.                                                                        |
+| `screenshots/<spec>/…png` | `cy.screenshot` captures, plus Cypress failure screenshots.                              |
+| `drive-auth-summary.txt`  | Exit codes, test totals and the screenshot list.                                         |
+| `cleanup.txt`, `state/`   | What cleanup stopped and reverted, and a copy of the run state.                          |
 
 Proof standards:
 
@@ -135,12 +136,12 @@ Run cleanup after every failed attempt too, so broken runs do not strand process
 
 All helpers are executable bash scripts (`chmod +x`) that source `helpers/common.sh`:
 
-| Helper | Invocation |
-| --- | --- |
-| `launch.sh` | `.cursor/skills/verify-rwa/helpers/launch.sh [RUN_ID]` |
-| `doctor.sh` | `.cursor/skills/verify-rwa/helpers/doctor.sh RUN_ID` |
-| `drive-auth.sh` | `.cursor/skills/verify-rwa/helpers/drive-auth.sh RUN_ID` |
-| `cleanup.sh` | `.cursor/skills/verify-rwa/helpers/cleanup.sh RUN_ID` |
+| Helper                | Invocation                                                                                                                                                                                          |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `launch.sh`           | `.cursor/skills/verify-rwa/helpers/launch.sh [RUN_ID]`                                                                                                                                              |
+| `doctor.sh`           | `.cursor/skills/verify-rwa/helpers/doctor.sh RUN_ID`                                                                                                                                                |
+| `drive-auth.sh`       | `.cursor/skills/verify-rwa/helpers/drive-auth.sh RUN_ID`                                                                                                                                            |
+| `cleanup.sh`          | `.cursor/skills/verify-rwa/helpers/cleanup.sh RUN_ID`                                                                                                                                               |
 | `auth-evidence.cy.js` | Run by `drive-auth.sh`. To run it alone: `yarn cypress:run --spec .cursor/skills/verify-rwa/helpers/auth-evidence.cy.js --config "specPattern=.cursor/skills/verify-rwa/helpers/*.cy.js,retries=0"` |
 
 Set `VERIFY_RWA_EVIDENCE_ROOT` to move the evidence root.
