@@ -43,13 +43,13 @@ Each feature file starts with an H1 title and one paragraph describing the user-
 
 These features have specs in `cypress/tests/ui/` and routes in `src/containers/PrivateRoutesContainer.tsx`, but no feature file yet. Until a file exists, drive them with the repo spec as-is (see "Drive" in `SKILL.md`).
 
-| Feature | Route | Repo spec |
-| --- | --- | --- |
+| Feature           | Route                                    | Repo spec                                    |
+| ----------------- | ---------------------------------------- | -------------------------------------------- |
 | Transaction feeds | `/`, `/public`, `/contacts`, `/personal` | `cypress/tests/ui/transaction-feeds.spec.ts` |
-| New transaction | `/transaction/new` | `cypress/tests/ui/new-transaction.spec.ts` |
-| Transaction view | `/transaction/:transactionId` | `cypress/tests/ui/transaction-view.spec.ts` |
-| Bank accounts | `/bankaccounts*` | `cypress/tests/ui/bankaccounts.spec.ts` |
-| Notifications | `/notifications` | `cypress/tests/ui/notifications.spec.ts` |
-| User settings | `/user/settings` | `cypress/tests/ui/user-settings.spec.ts` |
+| New transaction   | `/transaction/new`                       | `cypress/tests/ui/new-transaction.spec.ts`   |
+| Transaction view  | `/transaction/:transactionId`            | `cypress/tests/ui/transaction-view.spec.ts`  |
+| Bank accounts     | `/bankaccounts*`                         | `cypress/tests/ui/bankaccounts.spec.ts`      |
+| Notifications     | `/notifications`                         | `cypress/tests/ui/notifications.spec.ts`     |
+| User settings     | `/user/settings`                         | `cypress/tests/ui/user-settings.spec.ts`     |
 
 Third-party sign-in variants (Auth0, Okta, Cognito, Google; `cypress/tests/ui-auth-providers/`) need provider credentials and a swapped `src/index.tsx`. They are out of scope for this skill.
